@@ -91,8 +91,6 @@ module.exports = (_, argv) => ({
                 zustand: { singleton: true, requiredVersion: "4.1.1" }, // Share Zustand to ensure single store instance
             },
         }),
-        new DotenvWebpack({
-            path: './.env',
-        }),
+        new DotenvWebpack(),
     ],
 });
