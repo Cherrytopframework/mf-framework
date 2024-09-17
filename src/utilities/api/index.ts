@@ -12,7 +12,7 @@ const paths = {
     "ocr": "/camera/analyze-image",
     "portfolio": "/notion/portfolio",
     "notion": "/notion",
-    "host": process.env.CLIENT_HOSTNAME,
+    "host": ("https://openfitness2.onrender.com" || process.env.CLIENT_HOSTNAME),
 };
 
 const client = axios.create({
