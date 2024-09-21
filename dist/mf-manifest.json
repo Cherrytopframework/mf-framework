@@ -1,0 +1,661 @@
+{
+  "id": "app",
+  "name": "app",
+  "metaData": {
+    "name": "app",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "1.0.0",
+      "buildName": "modules"
+    },
+    "remoteEntry": {
+      "name": "static/js/app.0a53d5fc.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "@mf-types.zip",
+      "api": "@mf-types.d.ts"
+    },
+    "globalName": "app",
+    "pluginVersion": "0.6.6",
+    "publicPath": "/",
+    "prefetchInterface": false
+  },
+  "shared": [
+    {
+      "id": "app:react-dom",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ],
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    },
+    {
+      "id": "app:react",
+      "name": "react",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ],
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    },
+    {
+      "id": "app:zustand",
+      "name": "zustand",
+      "version": "4.5.5",
+      "singleton": true,
+      "requiredVersion": "^4.5.5",
+      "assets": {
+        "js": {
+          "async": [
+            "static/js/async/lib-react.0a387af6.js"
+          ],
+          "sync": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "app:App",
+      "name": "App",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/__federation_expose_App.5304fbcc.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./App"
+    },
+    {
+      "id": "app:AppProvider",
+      "name": "AppProvider",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/5226.c5f53464.js",
+            "static/js/async/105.34b47566.js",
+            "static/js/async/2504.7f8416fc.js",
+            "static/js/async/2299.4846e04a.js",
+            "static/js/async/2673.d348cbfa.js",
+            "static/js/async/__federation_expose_AppProvider.2ff5e3d8.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./AppProvider"
+    },
+    {
+      "id": "app:AlertProvider",
+      "name": "AlertProvider",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/2504.7f8416fc.js",
+            "static/js/async/__federation_expose_AlertProvider.07f9e27d.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./AlertProvider"
+    },
+    {
+      "id": "app:ConfirmProvider",
+      "name": "ConfirmProvider",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/__federation_expose_ConfirmProvider.cb6588b3.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./ConfirmProvider"
+    },
+    {
+      "id": "app:Camera",
+      "name": "Camera",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/537.2408d5bf.js",
+            "static/js/async/1337.f569cb53.js",
+            "static/js/async/__federation_expose_Camera.954bbdfa.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./Camera"
+    },
+    {
+      "id": "app:ChatBox",
+      "name": "ChatBox",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/418.046935ee.js",
+            "static/js/async/__federation_expose_ChatBox.aae17a68.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./ChatBox"
+    },
+    {
+      "id": "app:ChatView",
+      "name": "ChatView",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/3031.92196485.js",
+            "static/js/async/537.2408d5bf.js",
+            "static/js/async/7106.dd8bd53c.js",
+            "static/js/async/__federation_expose_ChatView.0eaeebe4.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [
+            "static/css/async/__federation_expose_ChatView.e3f2b654.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "./ChatView"
+    },
+    {
+      "id": "app:ChartsContainer",
+      "name": "ChartsContainer",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/1386.2f702bcf.js",
+            "static/js/async/418.046935ee.js",
+            "static/js/async/2785.8ee5fb6d.js",
+            "static/js/async/4026.884a6c17.js",
+            "static/js/async/__federation_expose_ChartsContainer.280cb93c.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./ChartsContainer"
+    },
+    {
+      "id": "app:DrawerContainer",
+      "name": "DrawerContainer",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/2299.4846e04a.js",
+            "static/js/async/__federation_expose_DrawerContainer.5ec82d81.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./DrawerContainer"
+    },
+    {
+      "id": "app:FormContainer",
+      "name": "FormContainer",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/105.34b47566.js",
+            "static/js/async/1386.2f702bcf.js",
+            "static/js/async/6540.6c9e1d57.js",
+            "static/js/async/4965.a3e9cf34.js",
+            "static/js/async/__federation_expose_FormContainer.c447a40d.js"
+          ],
+          "async": [
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./FormContainer"
+    },
+    {
+      "id": "app:MarkdownWrapper",
+      "name": "MarkdownWrapper",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/3031.92196485.js",
+            "static/js/async/__federation_expose_MarkdownWrapper.9aa0366d.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./MarkdownWrapper"
+    },
+    {
+      "id": "app:Navbar",
+      "name": "Navbar",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/8922.eb67ba17.js",
+            "static/js/async/__federation_expose_Navbar.b5fe532d.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./Navbar"
+    },
+    {
+      "id": "app:NotionDataWrapper",
+      "name": "NotionDataWrapper",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/3031.92196485.js",
+            "static/js/async/5226.c5f53464.js",
+            "static/js/async/4343.97b9d4b5.js",
+            "static/js/async/__federation_expose_NotionDataWrapper.1194df71.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./NotionDataWrapper"
+    },
+    {
+      "id": "app:QueryWrapper",
+      "name": "QueryWrapper",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/5226.c5f53464.js",
+            "static/js/async/__federation_expose_QueryWrapper.1bef951c.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./QueryWrapper"
+    },
+    {
+      "id": "app:ReusableTable",
+      "name": "ReusableTable",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/1386.2f702bcf.js",
+            "static/js/async/418.046935ee.js",
+            "static/js/async/2785.8ee5fb6d.js",
+            "static/js/async/__federation_expose_ReusableTable.0245f8b4.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./ReusableTable"
+    },
+    {
+      "id": "app:utilities/queries",
+      "name": "utilities/queries",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/__federation_expose_utilities__queries.73c035f3.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./utilities/queries"
+    },
+    {
+      "id": "app:utilities/store",
+      "name": "utilities/store",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/__federation_expose_utilities__store.8cdd22f1.js"
+          ],
+          "async": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/__federation_expose_App.5304fbcc.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/5226.c5f53464.js",
+            "static/js/async/105.34b47566.js",
+            "static/js/async/2504.7f8416fc.js",
+            "static/js/async/2299.4846e04a.js",
+            "static/js/async/2673.d348cbfa.js",
+            "static/js/async/__federation_expose_AppProvider.2ff5e3d8.js",
+            "static/js/async/__federation_expose_AlertProvider.07f9e27d.js",
+            "static/js/async/__federation_expose_ConfirmProvider.cb6588b3.js",
+            "static/js/async/537.2408d5bf.js",
+            "static/js/async/1337.f569cb53.js",
+            "static/js/async/__federation_expose_Camera.954bbdfa.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/418.046935ee.js",
+            "static/js/async/__federation_expose_ChatBox.aae17a68.js",
+            "static/js/async/3031.92196485.js",
+            "static/js/async/7106.dd8bd53c.js",
+            "static/js/async/__federation_expose_ChatView.0eaeebe4.js",
+            "static/js/async/1386.2f702bcf.js",
+            "static/js/async/2785.8ee5fb6d.js",
+            "static/js/async/4026.884a6c17.js",
+            "static/js/async/__federation_expose_ChartsContainer.280cb93c.js",
+            "static/js/async/__federation_expose_DrawerContainer.5ec82d81.js",
+            "static/js/async/6540.6c9e1d57.js",
+            "static/js/async/4965.a3e9cf34.js",
+            "static/js/async/__federation_expose_FormContainer.c447a40d.js",
+            "static/js/async/__federation_expose_MarkdownWrapper.9aa0366d.js",
+            "static/js/async/8922.eb67ba17.js",
+            "static/js/async/__federation_expose_Navbar.b5fe532d.js",
+            "static/js/async/4343.97b9d4b5.js",
+            "static/js/async/__federation_expose_NotionDataWrapper.1194df71.js",
+            "static/js/async/__federation_expose_QueryWrapper.1bef951c.js",
+            "static/js/async/__federation_expose_ReusableTable.0245f8b4.js",
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": [
+            "static/css/async/__federation_expose_ChatView.e3f2b654.css"
+          ]
+        }
+      },
+      "path": "./utilities/store"
+    },
+    {
+      "id": "app:utilities/store/utilityStore",
+      "name": "utilities/store/utilityStore",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/__federation_expose_utilities__store__utilityStore.890b2f04.js"
+          ],
+          "async": [
+            "static/js/async/lib-react.0a387af6.js",
+            "static/js/async/__federation_expose_App.5304fbcc.js",
+            "static/js/async/lib-axios.d2f7cb5e.js",
+            "static/js/async/9631.c1700681.js",
+            "static/js/async/4011.e7040501.js",
+            "static/js/async/7260.ed7f99ae.js",
+            "static/js/async/7470.59be17a0.js",
+            "static/js/async/561.349037fb.js",
+            "static/js/async/5585.408fd22e.js",
+            "static/js/async/1650.4a3cdf18.js",
+            "static/js/async/5226.c5f53464.js",
+            "static/js/async/105.34b47566.js",
+            "static/js/async/2504.7f8416fc.js",
+            "static/js/async/2299.4846e04a.js",
+            "static/js/async/2673.d348cbfa.js",
+            "static/js/async/__federation_expose_AppProvider.2ff5e3d8.js",
+            "static/js/async/__federation_expose_AlertProvider.07f9e27d.js",
+            "static/js/async/__federation_expose_ConfirmProvider.cb6588b3.js",
+            "static/js/async/537.2408d5bf.js",
+            "static/js/async/1337.f569cb53.js",
+            "static/js/async/__federation_expose_Camera.954bbdfa.js",
+            "static/js/async/233.a97c438d.js",
+            "static/js/async/7112.5866fbcf.js",
+            "static/js/async/2423.7c6d7226.js",
+            "static/js/async/101.8d85c652.js",
+            "static/js/async/75.6471befc.js",
+            "static/js/async/418.046935ee.js",
+            "static/js/async/__federation_expose_ChatBox.aae17a68.js",
+            "static/js/async/3031.92196485.js",
+            "static/js/async/7106.dd8bd53c.js",
+            "static/js/async/__federation_expose_ChatView.0eaeebe4.js",
+            "static/js/async/1386.2f702bcf.js",
+            "static/js/async/2785.8ee5fb6d.js",
+            "static/js/async/4026.884a6c17.js",
+            "static/js/async/__federation_expose_ChartsContainer.280cb93c.js",
+            "static/js/async/__federation_expose_DrawerContainer.5ec82d81.js",
+            "static/js/async/6540.6c9e1d57.js",
+            "static/js/async/4965.a3e9cf34.js",
+            "static/js/async/__federation_expose_FormContainer.c447a40d.js",
+            "static/js/async/__federation_expose_MarkdownWrapper.9aa0366d.js",
+            "static/js/async/8922.eb67ba17.js",
+            "static/js/async/__federation_expose_Navbar.b5fe532d.js",
+            "static/js/async/4343.97b9d4b5.js",
+            "static/js/async/__federation_expose_NotionDataWrapper.1194df71.js",
+            "static/js/async/__federation_expose_QueryWrapper.1bef951c.js",
+            "static/js/async/__federation_expose_ReusableTable.0245f8b4.js",
+            "static/js/async/5732.8e2450c7.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": [
+            "static/css/async/__federation_expose_ChatView.e3f2b654.css"
+          ]
+        }
+      },
+      "path": "./utilities/store/utilityStore"
+    }
+  ]
+}

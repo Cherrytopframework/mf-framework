@@ -51,6 +51,7 @@ export default defineConfig({
     output: {
         // set uniqueName explicitly to make HMR works
         uniqueName: 'app',
+        // distPath: 'dist'
     },
     // React support
     plugins: [
