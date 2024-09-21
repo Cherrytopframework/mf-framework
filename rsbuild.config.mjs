@@ -8,12 +8,17 @@ const rspack = require('@rspack/core');
 const {
     ModuleFederationPlugin,
 } = require('@module-federation/enhanced/rspack');
+const path = require('path');
 
 
 export default defineConfig({
     entry: './src/index.ts',
     // entry: './src/boostrap.tsx',
     context: __dirname,
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'modules.bundle.js',
+    },
     // Javascript / Typescript support
     module: {
         rules: [
@@ -62,6 +67,8 @@ export default defineConfig({
         port: 8080,
         headers: {
             'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
         },
     },
     dev: {
@@ -121,7 +128,16 @@ export default defineConfig({
             ],
         },
     },
-    // devServer: {
-    //     port: 8080,
-    // },
+    devServer: {
+      // static: {
+      //     directory: path.join(__dirname, "public"),
+      // },
+      // host: "./dist",
+      // port: 8080,
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      }
+  },
 });
