@@ -13,10 +13,18 @@ module.exports = (_, argv) => ({
             : path.resolve(__dirname, 'dist'),
         filename: 'modules.bundle.js',
     },
-    // devServer: {
-    //     host: "./dist",
-    //     port: 3100,
-    // },
+    devServer: {
+        // static: {
+        //     directory: path.join(__dirname, "public"),
+        // },
+        // host: "./dist",
+        // port: 8080,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+        }
+    },
     module: {
         rules: [
             { test: /\.txt$/, use: 'raw-loader', exclude: /node_modules/ },
@@ -82,13 +90,13 @@ module.exports = (_, argv) => ({
             shared: {
                 react: {
                     singleton: true,
-                    requiredVersion: "18.3.1"
+                    requiredVersion: "^18.3.1"
                 },
                 "react-dom": {
                     singleton: true,
-                    requiredVersion: "18.3.1"
+                    requiredVersion: "^18.3.1"
                 },
-                zustand: { singleton: true, requiredVersion: "4.1.1" }, // Share Zustand to ensure single store instance
+                zustand: { singleton: true, requiredVersion: "^4.1.1" }, // Share Zustand to ensure single store instance
             },
         }),
         new DotenvWebpack(),

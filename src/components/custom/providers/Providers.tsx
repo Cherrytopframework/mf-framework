@@ -1,8 +1,11 @@
 import React from 'react'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import AlertProvider from './AlertProvider'
 import { ConfirmProvider } from './Confirm'
 import { ThemeProvider } from '../../../utilities/theme'
 import QueryWrapper from '../wrappers/QueryWrapper/QueryWrapper'
+import Drawer from '../../Mui/Drawer/Drawer';
 
 
 const Providers = (
@@ -14,18 +17,21 @@ const Providers = (
 ) => {
     const handlePath = (paths: any) => path ? path(paths) : "";
     return (
-        <ThemeProvider>
-            {((typeof(path) === "boolean") && !path)
-                ? children()
-                : (
-                    <QueryWrapper path={handlePath as (paths: any) => string}>
-                        {({ data }) => children(data)}
-                    </QueryWrapper>
-                )
-            }
-            <AlertProvider />
-            <ConfirmProvider />
-        </ThemeProvider>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+            <ThemeProvider>
+                {((typeof(path) === "boolean") && !path)
+                    ? children()
+                    : (
+                        <QueryWrapper path={handlePath as (paths: any) => string}>
+                            {({ data }) => children(data)}
+                        </QueryWrapper>
+                    )
+                }
+                <AlertProvider />
+                <ConfirmProvider />
+                <Drawer />
+            </ThemeProvider>
+        </LocalizationProvider>
     )
 }
 

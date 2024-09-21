@@ -1,20 +1,20 @@
-FROM oven/bun:latest
+FROM node:18-alpine
 
 # Set working directory
-WORKDIR /backend
+WORKDIR /src
 
 # Copy package.json and yarn.lock/npm package.json to the container
-COPY ./backend/bun.lockb . 
-COPY ./backend/package.json .
+# COPY ./bun.lockb . 
+COPY ./package.json .
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN npm i
 
 # Copy the rest of the application code to the container
-COPY ./backend .
+COPY . .
 
 # Command to run the application
-CMD ["bun", "run", "dev"]
+CMD ["npm", "run", "dev"]
 
 # Expose port (if your application listens on a different port, update it here)
-EXPOSE 5001
+EXPOSE 8080

@@ -2,8 +2,9 @@ import { useSupabaseStore, SupabaseStore, SupabaseSession } from "./supabaseStor
 import { useFitnessStore, FitnessStoreState } from "./fitnessStore";
 import { useUtilityStore, UtilityStoreType, AlertType, ConfirmType } from "./utilityStore";
 import { useAppStore, AppStoreType } from "./appStore";
+import { useChatStore } from "./chatStore";
 
-export { useSupabaseStore, useAppStore, useFitnessStore, useUtilityStore };
+export { useSupabaseStore, useAppStore, useChatStore, useFitnessStore, useUtilityStore };
 export type {
     AlertType,
     ConfirmType,

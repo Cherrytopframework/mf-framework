@@ -23,8 +23,9 @@ interface DrawerType {
     children?: any
     anchor?: "left" | "right" | "top" | "bottom"
     open?: boolean
-    onOpen: (cb: () => void) => void
-    onClose: (cb: () => void) => void
+    content?: any
+    onOpen?: (cb: () => void) => void
+    onClose?: (cb: () => void) => void
 }
 
 interface UtilityStoreType {
@@ -57,14 +58,14 @@ const useUtilityStore = create<UtilityStoreType>((set) => ({
     },
     drawer: {
         open: false,
-        onOpen: (injectLogic: any) => {
-            if (injectLogic) injectLogic();
-            set((old) => ({ drawer: { ...old.drawer, open: true } }));
-        },
-        onClose: (injectLogic: any) => {
-            if (injectLogic) injectLogic();
-            set((old) => ({ drawer: { ...old.drawer, open: false } }));
-        },
+        // onOpen: (injectLogic: any) => {
+        //     if (injectLogic) injectLogic();
+        //     set((old) => ({ drawer: { ...old.drawer, open: true } }));
+        // },
+        // onClose: (injectLogic: any) => {
+        //     if (injectLogic) injectLogic();
+        //     set((old) => ({ drawer: { ...old.drawer, open: false } }));
+        // },
         content: null,
         anchor: "left"
     },

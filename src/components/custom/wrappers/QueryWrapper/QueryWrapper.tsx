@@ -10,20 +10,29 @@ const queryClient = new QueryClient();
 const QueryWrapper2 = ({
     path,
     children,
+    options,
     loadingContent,
     errorContent
 } : {
     path: (paths: any) => string,
     children: (data: any) => ReactNode
+    options?: {
+        method: string
+        payload?: any
+        graphql: false | boolean
+    }
     loadingContent?: ReactNode,
     errorContent?: (error: any) => ReactNode
 }) => {
     
     const queryPath = path(paths);
-    
-    // if (!queryPath) return <>{children(null)}</>;
-
-    const wrapperQuery = useQuery(queries.query(queryPath));
+    console.log("queryPath: ", queryPath, options);
+    const wrapperQuery = useQuery(
+        // queries.query(queryPath)
+        !options?.graphql
+            ? queries.query(queryPath, options?.payload, options?.method)
+            : queries.graphQuery(queryPath, options?.payload, options?.method)
+    );
     
     return ({
         pending: (<></>),
@@ -46,8 +55,14 @@ const QueryWrapper = ({
     ...args 
 }: { 
     children: (data: any) => ReactNode, 
-    path: (paths: any) => string 
+    path: (paths: any) => string,
+    options?: {
+        method: string
+        payload?: any
+        graphql: boolean
+    }
 }) => {
+    console.log("args: ", args);
     return (
         <QueryClientProvider client={queryClient}>
             {/* @ts-ignore */}

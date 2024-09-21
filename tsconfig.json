@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    // * Rustpack Config **
+    "types": [
+      "@rspack/core/module"
+    ],
+
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
@@ -14,12 +19,12 @@
     // "module": "ESNext",
     "skipLibCheck": true,
 
-    /* MUI Config */
+    //* MUI Config */
     // "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
 
-    /* Bundler mode */
+    //* Bundler mode */
     // "moduleResolution": "bundler",
     // "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -28,13 +33,13 @@
     // "emitDeclarationOnly": true,
     // "jsx": "react-jsx",
 
-    /* Linting */
+    //* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* Docker Config */
+    //* Docker Config */
     "esModuleInterop": true,
 
     // Allow JS

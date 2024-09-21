@@ -12,18 +12,21 @@ const paths = {
     "ocr": "/camera/analyze-image",
     "portfolio": "/notion/portfolio",
     "notion": "/notion",
-    "host": process.env.CLIENT_HOSTNAME //("https://openfitness2.onrender.com") // || process.env.CLIENT_HOSTNAME),
+    "graphql": "http://localhost:4000",
+    "host": "http://localhost:5052", // process.env.CLIENT_HOSTNAME //("https://openfitness2.onrender.com") // || process.env.CLIENT_HOSTNAME),
 };
 
 const client = axios.create({
     // todo: capture CLIENT_HOSTNAME when using the setup script
     // baseURL: (process.env.CLIENT_HOSTNAME + "/api/v1"),
+    // baseURL: paths.host,
     baseURL: (paths.host + "/api/v1"),
+    // baseURL: "",
     headers: {},
 });
 
 const graphClient = axios.create({
-    baseURL: (paths.host + "/graphql"),
+    baseURL: paths.graphql,
     headers: {},
 });
 
@@ -37,7 +40,7 @@ const queries = ({
             : (await (client as any)[method || "get"](queryPath)).data
     }),
     graphQuery: (queryPath: string, payload?: any, method?: string) => ({
-        queryKey: [queryPath],
+        queryKey: ["graphql", queryPath],
         queryFn: async () => payload 
             ? (await (graphClient as any)[method || "post"](queryPath, payload)).data
             : (await (graphClient as any)[method || "get"](queryPath)).data

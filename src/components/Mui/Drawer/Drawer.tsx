@@ -1,18 +1,15 @@
 import { Box, SwipeableDrawer } from '@mui/material'
-import { DrawerType } from '../../../utilities/store/utilityStore';
+import { DrawerType, useUtilityStore } from '../../../utilities/store/utilityStore';
 
-const Drawer = (props: DrawerType) => {
+const Drawer = ({ children, ...props }: DrawerType) => {
+    const { drawer, setDrawer } = useUtilityStore();
     return (
         // @ts-ignore
-        <SwipeableDrawer {...props}
-            // anchor="left"
-            // open={true}
-            // onOpen={() => {}}
-            // onClose={() => {}}
-        >
+        <SwipeableDrawer {...props} {...drawer} onClose={() => setDrawer({ open: false })}>
             <Box sx={{ width: 200, height: '100%', mt: 8 }}>
-                <h2>Drawer</h2>
-                {props.children}
+                <h2>Remote Drawer</h2>
+                {drawer?.content && drawer.content}
+                {children}
             </Box>
         </SwipeableDrawer>
     )

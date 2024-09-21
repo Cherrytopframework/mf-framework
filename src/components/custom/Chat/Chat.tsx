@@ -13,12 +13,20 @@ import {
 } from '@mui/icons-material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useRef } from 'react';
-import { useAppStore } from '../../../utilities/store'
+import { useAppStore, useChatStore } from '../../../utilities/store'
 
-const Chat = () => {
-    const appStore = useAppStore();
+
+// ***
+// * Chat Component
+// * Purpose:
+// *  - Drop and go chat ui with logic to expose chat values
+// ***
+const Chat = (props: any) => {
+    // const appStore = useAppStore();
+    const chatStore = useChatStore();
+
     // const chatScripts = () => {};
-    let chat: any = appStore;
+    let chat: any = chatStore;
     let stabilityBalance = 0;
     const ref = useRef();
     return (
@@ -85,8 +93,8 @@ const Chat = () => {
                 fullWidth
                 autoFocus
                 placeholder={`${chat?.mode} mode: Type your message...`}
-                // value={inputMessage}
-                // onChange={(e) => setInputMessage(e.target.value)}
+                value={chat.inputMessage}
+                onChange={(e) => chat.handleInput(e.target.value)}
                 // onKeyPress={handleKeyPress}
                 sx={{ overflow: 'auto', borderRadius: 0 }} 
                 multiline
@@ -125,6 +133,10 @@ const Chat = () => {
                             <IconButton
                                 sx={theme => ({ color: theme.palette.primary.main })}
                                 aria-label="send"
+                                onClick={() => {
+                                    console.log("send", ref.current)
+                                    if (props?.handleSend) props.handleSend(chat.inputMessage);
+                                }}
                                 // onClick={() => chatScripts.handleSendMessage({
                                 //     chatStore: chat, 
                                 //     serverMutation

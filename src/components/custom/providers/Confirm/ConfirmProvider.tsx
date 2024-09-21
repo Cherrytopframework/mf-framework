@@ -18,10 +18,7 @@ const Styled = {
 
 const ConfirmProvider = ({ children }: { children?: React.ReactNode }) => {
     const { confirm } = useUtilityStore();
-
-    const handleAnswer = (answer: boolean) => confirm?.onConfirm 
-        && confirm.onConfirm(answer);
-
+    const handleAnswer = (answer: boolean) => confirm?.onConfirm && confirm.onConfirm(answer);
     return (
         <>
             {children}
