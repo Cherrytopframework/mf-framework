@@ -75,10 +75,10 @@ export default defineConfig({
                 // new HtmlWebpackPlugin(),
                 new ModuleFederationPlugin({
                     name: 'app',
-                    remotes: {
-                        app: 'app@https://cherrytopframework.netlify.app/remoteEntry.js',
-                        // openfitness: "openfitness@http://localhost:3001/assets/remoteEntry.js",
-                    },
+                    // remotes: {
+                    //     // app: 'app@https://cherrytopframework.netlify.app/remoteEntry.js',
+                    //     // openfitness: "openfitness@http://localhost:3001/assets/remoteEntry.js",
+                    // },
                     exposes: {
                         "./App": "./src/App/index.js",
                         // app/AppProvider includes theme, alert, confirm, drawer providers
@@ -98,8 +98,7 @@ export default defineConfig({
                         "./ReusableTable": "./src/components/custom/charts/ReusableTable.tsx",
                         "./utilities/queries": "./src/utilities/api/index.ts",
                         "./utilities/store": "./src/utilities/store/index.ts",
-                        "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts",
-
+                        "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts"
                     },
                     shared: {
                       react: {
