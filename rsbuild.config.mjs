@@ -59,6 +59,9 @@ export default defineConfig({
     ],
     server: {
         port: 8080,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
     },
     dev: {
         // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
