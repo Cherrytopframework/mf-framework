@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkapp=self.webpackChunkapp||[]).push([["4874"],{64804:function(e,l,s){s.r(l),s.d(l,{default:function(){return c}});var t=s(85893);s(57322);let c=()=>(0,t.jsx)("div",{children:(0,t.jsx)("h1",{children:"Hello, Webpack + React! This is from the remote shell"})})}}]);
