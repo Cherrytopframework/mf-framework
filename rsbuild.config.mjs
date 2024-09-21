@@ -11,7 +11,8 @@ const {
 
 
 export default defineConfig({
-    entry: './src/boostrap.tsx',
+    entry: './src/index.ts',
+    // entry: './src/boostrap.tsx',
     context: __dirname,
     // Javascript / Typescript support
     module: {
@@ -83,7 +84,7 @@ export default defineConfig({
                     //     // openfitness: "openfitness@http://localhost:3001/assets/remoteEntry.js",
                     // },
                     exposes: {
-                        "./App": "./src/App/index.js",
+                        "./App": "./src/App/index.tsx",
                         // app/AppProvider includes theme, alert, confirm, drawer providers
                         "./AppProvider": "./src/components/custom/providers/Providers.tsx",
                         "./AlertProvider": "./src/components/custom/providers/AlertProvider.tsx",
