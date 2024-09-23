@@ -13,8 +13,7 @@ const paths = {
     "portfolio": "/notion/portfolio",
     "notion": "/notion",
     "graphql": "http://localhost:4000",
-    "host": "http://localhost:5052",
-    // "host": process.env.CLIENT_HOSTNAME, //("https://openfitness2.onrender.com") // || process.env.CLIENT_HOSTNAME),
+    "host": process.env.CLIENT_HOSTNAME,
     ...apiConfig.paths
 };
 
