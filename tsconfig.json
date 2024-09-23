@@ -2,56 +2,56 @@
   "compilerOptions": {
     // * Rustpack Config -- loose config **
     "types": [
-        "@rspack/core/module"
+      "@rspack/core/module",
+      "vite/client"
     ],
-
-    // "moduleResolution": "bundler",
-    "module": "Node16",
-    "noEmit": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
-    "moduleResolution": "Node16",
-    // // * Rustpack Config **
-    // "types": [
-    //   "@rspack/core/module"
-    // ],
-
-    // "outDir": "./dist/",
-    // "noImplicitAny": true,
-    // "module": "ESNext",
-    // "target": "ESNext",
-    // "jsx": "react-jsx",
-    // "allowJs": true,
-    // "moduleResolution": "node",
-
-    // // "target": "ESNext",
-    // "useDefineForClassFields": true,
-    // "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    // // "module": "ESNext",
-    // "skipLibCheck": true,
-
-    // //* MUI Config */
-    // // "noImplicitAny": true,
-    // "noImplicitThis": true,
-    // "strictNullChecks": true,
-
-    // //* Bundler mode */
     // // "moduleResolution": "bundler",
-    // // "allowImportingTsExtensions": true,
-    // "resolveJsonModule": true,
-    // "isolatedModules": true,
-    // "noEmit": false,
-    // // "emitDeclarationOnly": true,
-    // // "jsx": "react-jsx",
-
-    // //* Linting */
-    // "strict": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-
-    // //* Docker Config */
+    // "module": "Node16",
+    // "noEmit": true,
+    // "outDir": "dist",
     // "esModuleInterop": true,
+    // "moduleResolution": "Node16",
+    // // // * Rustpack Config **
+    // // "types": [
+    // //   "@rspack/core/module"
+    // // ],
+
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+
+    // "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    // "module": "ESNext",
+    "skipLibCheck": true,
+
+    //* MUI Config */
+    // "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+
+    //* Bundler mode */
+    // "moduleResolution": "bundler",
+    // "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    // "emitDeclarationOnly": true,
+    // "jsx": "react-jsx",
+
+    //* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    //* Docker Config */
+    "esModuleInterop": true,
 
     // Allow JS
     // "allowJs": true
