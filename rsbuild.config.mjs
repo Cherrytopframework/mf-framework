@@ -4,7 +4,7 @@ import { pluginReact } from '@rsbuild/plugin-react';
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
 const Dotenv = require('dotenv-webpack');
-const rspack = require('@rspack/core');
+// const rspack = require('@rspack/core');
 
 const {
     ModuleFederationPlugin,
@@ -85,7 +85,7 @@ export default defineConfig({
             },
             plugins: [
                 // new HtmlWebpackPlugin(),
-                new rspack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
+                // new rspack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
                 new Dotenv({
                   path: './.env', // Path to .env file (this is the default)
                   safe: true, // load .env.example (defaults to "false" which does not use dotenv-safe)
