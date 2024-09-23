@@ -24,9 +24,7 @@ const QueryWrapper2 = ({
     loadingContent?: ReactNode,
     errorContent?: (error: any) => ReactNode
 }) => {
-    
     const queryPath = path(paths);
-    console.log("queryPath: ", queryPath, options);
     const wrapperQuery = useQuery(
         // queries.query(queryPath)
         !options?.graphql
@@ -62,7 +60,6 @@ const QueryWrapper = ({
         graphql: boolean
     }
 }) => {
-    console.log("args: ", args);
     return (
         <QueryClientProvider client={queryClient}>
             {/* @ts-ignore */}

@@ -29,13 +29,13 @@ export default function Dashboard(props) {
     return (
         <Box sx={{ display: 'flex' }}>
 
-            <AppBar sx={{ zIndex: 100 }}>
+            {/* <AppBar sx={{ zIndex: 100 }}>
                 <Toolbar>
                     <Typography color="inherit" variant="h6" component="h6">
                         CherryTop Framework
                     </Typography>
                 </Toolbar>
-            </AppBar>
+            </AppBar> */}
 
             <Drawer
                 variant="permanent"

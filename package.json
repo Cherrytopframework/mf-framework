@@ -1,15 +1,17 @@
 {
   "name": "modules",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MFE Host/Shell for CherrytopFramework",
+  "main": "src/index.ts",
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "dev": "rsbuild dev --open",
+    "pro": "concurrently \"npm run test\" \"npm run dev\"",
     "build": "rsbuild build",
     "serve": "rspack serve",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "all": "../_run.sh"
   },
   "keywords": [],
   "author": "",

@@ -5,17 +5,21 @@ const Drawer = ({ children, ...props }: DrawerType) => {
     const { drawer, setDrawer } = useUtilityStore();
     return (
         // @ts-ignore
-        <SwipeableDrawer {...props} {...drawer} onClose={() => setDrawer({ open: false })}>
-            <Box sx={{ width: 200, height: '100%', mt: 8 }}>
-                <h2>Remote Drawer</h2>
+        <SwipeableDrawer
+            {...props} 
+            {...drawer} 
+            onClose={() => setDrawer({ open: false })}
+        >
+            <Box sx={{ minWidth: 200, height: '100%', mt: 0, ...(drawer as any)?.boxStyle }}>
+                {/* <h2>Remote Drawer</h2> */}
                 {drawer?.content && drawer.content}
                 {children}
             </Box>
         </SwipeableDrawer>
-    )
-}
+    );
+};
 
-export default Drawer
+export default Drawer;
 
 // ?? USAGE
 // import { useUtilityStore } from '../../../utilities/store';

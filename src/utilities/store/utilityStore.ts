@@ -58,21 +58,13 @@ const useUtilityStore = create<UtilityStoreType>((set) => ({
     },
     drawer: {
         open: false,
-        // onOpen: (injectLogic: any) => {
-        //     if (injectLogic) injectLogic();
-        //     set((old) => ({ drawer: { ...old.drawer, open: true } }));
-        // },
-        // onClose: (injectLogic: any) => {
-        //     if (injectLogic) injectLogic();
-        //     set((old) => ({ drawer: { ...old.drawer, open: false } }));
-        // },
         content: null,
         anchor: "left"
     },
+    colorMode: "dark",
     setDrawer: (drawer) => set((old) => ({ drawer: { ...old.drawer, ...drawer } })),
     setConfirm: (confirm) => set((old) => ({ confirm: { ...old.confirm, ...confirm }})),
     clearConfirm: () => set(() => ({ confirm: { open: false, title: "", message: "" } })),
-    colorMode: "dark",
     setColorMode: (colorMode) => set(() => ({ colorMode })),
     setAlert: (alert) => set(() => ({ alert })),
     createAlert: (severity: string, message: string) => set(() => ({ alert: { severity, message, open: true } }) as UtilityStoreType),

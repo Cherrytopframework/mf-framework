@@ -14,7 +14,8 @@ import { defaults } from './defaultData';
 
 // Render
 const ChartsContainer = ({ 
-    charts, 
+    charts,
+    onChartData,
     label = undefined, 
     defaultChart = "table", 
     disableChartButtons = false, 
@@ -27,6 +28,7 @@ const ChartsContainer = ({
     disableChartButtons?: boolean,
     disableFilterButtons?: boolean,
     setIsOpen?: (open: boolean) => void
+    onChartData?: (data: any) => void
 }) => {
     
     const [activeChart, setActiveChart] = React.useState(defaultChart);
@@ -37,6 +39,8 @@ const ChartsContainer = ({
         if (value === "expand") setIsOpen(true);
         else setActiveChart(value);
     };
+
+    if (onChartData) onChartData(charts);
 
     return (
         <>

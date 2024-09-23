@@ -107,6 +107,7 @@ const Chat = (props: any) => {
                                     sx={theme => ({ color: theme.palette.primary.main })}
                                     aria-label="filter"
                                     size="small"
+                                    color="inherit"
                                     // onClick={openCameraApp}
                                     disabled={!chat.activeChat?.session_id}
                                 >
@@ -119,6 +120,7 @@ const Chat = (props: any) => {
                                         sx={theme => ({ color: theme.palette.primary.main })}
                                         aria-label="filter"
                                         size="small"
+                                        color="inherit"
                                         // onClick={() => chatScripts.handleAddAttachment(chat)}
                                         disabled={!chat.activeChat?.session_id}
                                     >
@@ -133,14 +135,11 @@ const Chat = (props: any) => {
                             <IconButton
                                 sx={theme => ({ color: theme.palette.primary.main })}
                                 aria-label="send"
+                                color="inherit"
                                 onClick={() => {
                                     console.log("send", ref.current)
                                     if (props?.handleSend) props.handleSend(chat.inputMessage);
                                 }}
-                                // onClick={() => chatScripts.handleSendMessage({
-                                //     chatStore: chat, 
-                                //     serverMutation
-                                // })}
                                 size="small"
                             >
                                 <SendIcon />
@@ -148,6 +147,7 @@ const Chat = (props: any) => {
                             <IconButton
                                 sx={theme => ({ color: theme.palette.primary.main })}
                                 aria-label="send"
+                                color="inherit"
                                 // onClick={() => chat.handleView("voice")}
                                 size="small"
                             >

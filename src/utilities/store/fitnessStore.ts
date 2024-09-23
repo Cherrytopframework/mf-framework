@@ -20,7 +20,7 @@ interface FitnessStoreState {
     setActiveSearchTab: (activeSearchTab: 'recent' | 'favorites' | 'search') => void;
 }
 
-const useFitnessStore = create < FitnessStoreState > ((set) => ({
+const useFitnessStore = create<FitnessStoreState>((set) => ({
     // states
     userID: null,
     isDrawerOpen: false,

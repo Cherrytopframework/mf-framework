@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import apiConfig from "./api.config";
 
 // todo: write an npx command to add paths
 const paths = {
@@ -13,7 +13,9 @@ const paths = {
     "portfolio": "/notion/portfolio",
     "notion": "/notion",
     "graphql": "http://localhost:4000",
-    "host": "http://localhost:5052", // process.env.CLIENT_HOSTNAME //("https://openfitness2.onrender.com") // || process.env.CLIENT_HOSTNAME),
+    // "host": "http://localhost:5052", 
+    "host": process.env.CLIENT_HOSTNAME, //("https://openfitness2.onrender.com") // || process.env.CLIENT_HOSTNAME),
+    ...apiConfig.paths
 };
 
 const client = axios.create({

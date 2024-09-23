@@ -1,4 +1,4 @@
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider, PageTransitionWrapper } from "./ThemeProvider";
 import SmoothScroll from "./SmoothScroll";
 
-export { ThemeProvider, SmoothScroll };
+export { ThemeProvider, PageTransitionWrapper, SmoothScroll };
