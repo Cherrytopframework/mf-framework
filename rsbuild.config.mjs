@@ -4,7 +4,7 @@ import { pluginReact } from '@rsbuild/plugin-react';
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
 const Dotenv = require('dotenv-webpack');
-// const NpmDtsPlugin = require('npm-dts-webpack-plugin');
+const NpmDtsPlugin = require('npm-dts-webpack-plugin');
 const rspack = require('@rspack/core');
 
 const {
@@ -62,21 +62,16 @@ export default defineConfig({
     output: {
         // set uniqueName explicitly to make HMR works
         uniqueName: 'app',
-        // distPath: 'dist'
+        // distPath: 'dist',
         // publicPath: 'https://cherrtyopframework.netlify.app/',
-        // crossOriginLoading: 'anonymous',
+        crossOriginLoading: 'anonymous',
     },
     // React support
     plugins: [
         pluginReact()
     ],
     server: {
-        port: 8080,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        },
+        port: 8080
     },
     dev: {
         // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
@@ -192,7 +187,21 @@ export default defineConfig({
         },
     },
     devServer: { 
-      port: 8080
+      port: 8080,
+      allowedHosts: [
+        'auto'
+      ],
+      headers: {
+          'Access-Control-Allow-Origin': ['*', 'http://localhost:3000'],
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      },
+      hot: true,
+      client: {
+        logging: 'info',
+        overlay: true,
+        progress: true
+      },
     }
   //   devServer: {
   //     // static: {
