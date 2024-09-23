@@ -2,8 +2,9 @@ import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
+// const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
 const Dotenv = require('dotenv-webpack');
+// const NpmDtsPlugin = require('npm-dts-webpack-plugin');
 // const rspack = require('@rspack/core');
 
 const {
@@ -15,11 +16,11 @@ const path = require('path');
 export default defineConfig({
     entry: './src/index.ts',
     // entry: './src/boostrap.tsx',
-    context: __dirname,
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'modules.bundle.js',
-    },
+    // context: __dirname,
+    // output: {
+    //   path: path.resolve(__dirname, 'dist'),
+    //   filename: 'modules.bundle.js',
+    // },
     // Javascript / Typescript support
     module: {
         rules: [
@@ -59,6 +60,8 @@ export default defineConfig({
         // set uniqueName explicitly to make HMR works
         uniqueName: 'app',
         // distPath: 'dist'
+        publicPath: 'https://cherrtyopframework.netlify.app/',
+        crossOriginLoading: 'anonymous',
     },
     // React support
     plugins: [
@@ -86,6 +89,7 @@ export default defineConfig({
             plugins: [
                 // new HtmlWebpackPlugin(),
                 // new rspack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
+                // new NpmDtsPlugin(),
                 new Dotenv({
                   // path: './.env', // Path to .env file (this is the default)
                   // safe: true, // load .env.example (defaults to "false" which does not use dotenv-safe)
@@ -136,8 +140,8 @@ export default defineConfig({
                       zustand: { singleton: true, requiredVersion: "^4.1.1" }, // Share Zustand to ensure single store instance
                   },
                 }),
-                //todo Need to add code to check if environment is development
-                new ReactRefreshPlugin()
+                // //todo Need to add code to check if environment is development
+                // new ReactRefreshPlugin()
             ],
         },
     },
