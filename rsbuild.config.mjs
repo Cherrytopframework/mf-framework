@@ -118,7 +118,7 @@ export default defineConfig({
                 // new rspack.container.ModuleFederationPlugin({
                 new rspack.container.ModuleFederationPluginV1({
                     name: 'app',
-                    filename: 'remoteEntry.js',
+                    // filename: 'remoteEntry.js',
                     // remotes: {},
                     exposes: {
                       ...federationConfig.exposes,
@@ -174,7 +174,7 @@ export default defineConfig({
                 }),
                 NativeFederationTypeScriptRemote.rspack({
                   moduleFederationConfig: {
-                    name: "app",
+                    name: "mfe2",
                     remotes: {},
                     exposes: {...federationConfig.exposes},
                   },
