@@ -146,8 +146,9 @@ export default defineConfig({
       //     directory: path.join(__dirname, "public"),
       // },
       // host: "./dist",
-      // port: 8080,
+      port: 8080,
       headers: {
+        // 'Access-Control-Allow-Origin': ['*', 'http://localhost:3000'],
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
           "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
