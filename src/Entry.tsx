@@ -1,16 +1,12 @@
-// import App from './components/Mui/Dashboard/Dashboard';
-// import Providers from './components/custom/providers/Providers';
-import AppBasic from './App';
-import './styles/index.css'; // Optional CSS file
+import React from 'react'
+// import MfeButton from 'mfe2/Button';
 
-// const AppEntry = () => {
-//     return (
-//         <Providers path={(paths) => `${paths.notion}/list`}>
-//             {(init: any) => <App initialData={init} />}
-//         </Providers>
-//     );
-// };
+const Entry = () => {
+    return (
+        <div>Family Apps Hub
+            {/* <MfeButton /> */}
+        </div>
+    )
+}
 
-// export default AppEntry;
-
-export default AppBasic;
+export default Entry

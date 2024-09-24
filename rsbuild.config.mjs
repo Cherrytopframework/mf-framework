@@ -20,6 +20,7 @@ const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack');
 const config2 = defineConfig({
   entry: './src/index.ts',
   context: __dirname,
+  watch: true,
   // Javascript / Typescript support
   module: {
       rules: [
@@ -87,9 +88,12 @@ const config2 = defineConfig({
                       // openfitness: 'openfitness@http://localhost:3003/mf-manifest.json',
                       // stonetowerpizza: 'stonetowerpizza@http://localhost:3004/mf-manifest.json',
                   },
-                  shared: ['react', 'react-dom'],
+                  shared: ['react', 'react-dom', 'zustand'],
               }),
               new ReactRefreshPlugin(),
+            //   new rspack.DefinePlugin({
+            //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            // }),
           ],
       },
   },

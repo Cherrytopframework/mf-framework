@@ -11,7 +11,7 @@
     // // "moduleResolution": "bundler",
     // "module": "Node16",
     // "noEmit": true,
-    // "outDir": "dist",
+    "outDir": "./dist/",
     // "esModuleInterop": true,
     // "moduleResolution": "Node16",
     // // * Rustpack Config **
@@ -165,6 +165,6 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     // "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "include": ["src"],
+  "include": ["srcOld"],
   // "references": [{ "path": "./tsconfig.node.json" }]
 }
