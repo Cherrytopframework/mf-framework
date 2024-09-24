@@ -1,9 +1,10 @@
-import React from 'react';
+import WebpackButton from 'mf2/Button';
 
 const App = () => {
     return (
         <div>
-            <h1>Hello, Webpack + React! This is from the remote shell</h1>
+            <h1>Cherrytopframework modules</h1>
+            <WebpackButton />
         </div>
     );
 };

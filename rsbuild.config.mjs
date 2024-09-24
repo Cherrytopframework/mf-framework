@@ -2,28 +2,106 @@ import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
+const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
 const Dotenv = require('dotenv-webpack');
-const NpmDtsPlugin = require('npm-dts-webpack-plugin');
+// const NpmDtsPlugin = require('npm-dts-webpack-plugin');
 const rspack = require('@rspack/core');
 const {
 	NativeFederationTypeScriptHost,
 	NativeFederationTypeScriptRemote,
 } = require("@module-federation/native-federation-typescript");
-const federationConfig = require('./federation.config.json');
+const federationConfig = require('./configuration.json');
 const path = require('path');
 
-const {
-    ModuleFederationPlugin,
-} = require('@module-federation/enhanced/rspack');
+// most modern module federation plugin
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack');
 
 
-export default defineConfig({
-    // entry: './src/index.ts',
+const config2 = defineConfig({
+  entry: './src/index.ts',
+  context: __dirname,
+  // Javascript / Typescript support
+  module: {
+      rules: [
+      {
+          test: /\.jsx$/,
+          use: {
+          loader: 'builtin:swc-loader',
+          options: {
+              jsc: {
+              parser: {
+                  syntax: 'ecmascript',
+                  jsx: true,
+              },
+              transform: {
+                  react: {
+                  pragma: 'React.createElement',
+                  pragmaFrag: 'React.Fragment',
+                  throwIfNamespace: true,
+                  development: false,
+                  useBuiltins: false,
+                  },
+              },
+              },
+          },
+          },
+          type: 'javascript/auto',
+      },
+      ],
+  },
+  output: {
+      // set uniqueName explicitly to make HMR works
+      uniqueName: 'app',
+  },
+  // React support
+  plugins: [
+      pluginReact()
+  ],
+  server: {
+      port: 8080
+  },
+  dev: {
+      // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
+      assetPrefix: true,
+  },
+  // Module federation support
+  tools: {
+      rspack: {
+          output: {
+              // You need to set a unique value that is not equal to other applications
+              uniqueName: 'app'
+          },
+          plugins: [
+              // new HtmlWebpackPlugin(),
+              new ModuleFederationPlugin({
+                  name: 'app',
+                  exposes: {},
+                  remotes: {
+                      // production
+                      // app: 'app@https://cherrytopframework.netlify.app/mf-manifest.json',
+                      // development
+                      // app: 'app@http://localhost:8080/mf-manifest.json',
+                      // mfe2: 'mfe2@http://localhost:3000/mf-manifest.json',
+                      mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
+                      // aichat: 'aichat@http://localhost:3002/mf-manifest.json',
+                      // openfitness: 'openfitness@http://localhost:3003/mf-manifest.json',
+                      // stonetowerpizza: 'stonetowerpizza@http://localhost:3004/mf-manifest.json',
+                  },
+                  shared: ['react', 'react-dom'],
+              }),
+              new ReactRefreshPlugin(),
+          ],
+      },
+  },
+  devServer: { port: 8080 }
+});
+
+const config1 = defineConfig({
+    entry: './src/index.ts',
     context: __dirname,
-    entry: {
-      app: './src/index.ts',
-    },
+    // entry: {
+    //   app: './src/index.ts',
+    // },
     // target: "web",
     watch: true,
     output: {
@@ -40,12 +118,15 @@ export default defineConfig({
     mode: "development",
     resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+      alias: {
+        // "@": path.resolve(__dirname, "src"),
+        components: path.resolve(__dirname, 'src/components/'),
+        // Not used yet
+        // utils: path.resolve(__dirname, 'src/utils/'),
+        // assets: path.resolve(__dirname, 'src/assets/'),
+        store: path.resolve(__dirname, 'src/utilities/store/'),
+      },
     },
-    // output: {
-    //   path: path.resolve(__dirname, 'dist'),
-    //   filename: 'modules.bundle.js',
-    // },
-    // Javascript / Typescript support
     module: {
         rules: [
           {
@@ -119,38 +200,42 @@ export default defineConfig({
                 new rspack.container.ModuleFederationPluginV1({
                     name: 'app',
                     // filename: 'remoteEntry.js',
-                    // remotes: {},
+                    remotes: {
+                      // mf2: 'mf2@http://localhost:8082/remoteEntry.js',
+                      // tester: 'tester@http://localhost:8081/remoteEntry.js',
+                      mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
+                    },
                     exposes: {
-                      ...federationConfig.exposes,
-                      // "./App": "./src/App/index.tsx",
-                      // "./CherrytopFramework": "./src/Entry.tsx",
-                      // "./AuthProvider": "./src/components/custom/Auth/Auth3.tsx",
-                      // // app/AppProvider includes theme, alert, confirm, drawer providers
-                      // "./AppProvider": "./src/components/custom/providers/Providers.tsx",
-                      // "./AlertProvider": "./src/components/custom/providers/AlertProvider.tsx",
-                      // "./ConfirmProvider": "./src/components/custom/providers/Confirm/ConfirmProvider.tsx",
-                      // "./BottomNavigation": "./src/components/Mui/BottomNavigation/BottomNavigation.tsx",
-                      // "./Camera": "./src/components/custom/Camera/Camera.tsx",
-                      // "./ChatBox": "./src/components/custom/Chat/Chat.tsx",
-                      // "./ChatView": "./src/components/custom/Chat/ChatView.tsx",
-                      // "./ChartsContainer": "./src/components/custom/charts/ChartsWrapper.tsx",
-                      // "./DrawerContainer": "./src/components/Mui/Drawer/Drawer.tsx",
-                      // "./DateTimeLabel": "./src/components/custom/DateTimeLabel/DateTimeLabel.tsx",
-                      // './DisplayCard': './src/components/Mui/DisplayCard/DisplayCard.tsx',                        
-                      // "./FormContainer": "./src/components/custom/forms/FormContainer.tsx",
-                      // './List': './src/components/Mui/List/List.tsx',
-                      // "./MarkdownWrapper": "./src/components/custom/wrappers/MarkdownWrapper/MarkdownWrapper.tsx",
-                      // "./Navbar": "./src/components/Mui/Navbar/Navbar.tsx",
-                      // "./NavMenu": "./src/components/Mui/Navbar/NavMenu.tsx",
-                      // "./NotionDataWrapper": "./src/components/custom/NotionPage/NotionPage.tsx",
-                      // "./QueryWrapper": "./src/components/custom/wrappers/QueryWrapper/QueryWrapper.tsx",
-                      // "./ReusablePopover": "./src/components/custom/ReusablePopover/ReusablePopover.tsx",
-                      // "./ReusableTable": "./src/components/custom/charts/ReusableTable.tsx",
-                      // "./Tabs": "./src/components/Mui/Tabs/Tabs.tsx",
-                      // "./ThemeProvider": "./src/utilities/theme/index.ts",
-                      // "./utilities/queries": "./src/utilities/api/index.ts",
-                      // "./utilities/store": "./src/utilities/store/index.ts",
-                      // "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts"
+                      // ...federationConfig.exposes,
+                      "./App": "./src/App/index.tsx",
+                      "./CherrytopFramework": "./src/Entry.tsx",
+                      "./AuthProvider": "./src/components/custom/Auth/Auth3.tsx",
+                      // app/AppProvider includes theme, alert, confirm, drawer providers
+                      "./AppProvider": "./src/components/custom/providers/Providers.tsx",
+                      "./AlertProvider": "./src/components/custom/providers/AlertProvider.tsx",
+                      "./ConfirmProvider": "./src/components/custom/providers/Confirm/ConfirmProvider.tsx",
+                      "./BottomNavigation": "./src/components/Mui/BottomNavigation/BottomNavigation.tsx",
+                      "./Camera": "./src/components/custom/Camera/Camera.tsx",
+                      "./ChatBox": "./src/components/custom/Chat/Chat.tsx",
+                      "./ChatView": "./src/components/custom/Chat/ChatView.tsx",
+                      "./ChartsContainer": "./src/components/custom/charts/ChartsWrapper.tsx",
+                      "./DrawerContainer": "./src/components/Mui/Drawer/Drawer.tsx",
+                      "./DateTimeLabel": "./src/components/custom/DateTimeLabel/DateTimeLabel.tsx",
+                      './DisplayCard': './src/components/Mui/DisplayCard/DisplayCard.tsx',                        
+                      "./FormContainer": "./src/components/custom/forms/FormContainer.tsx",
+                      './List': './src/components/Mui/List/List.tsx',
+                      "./MarkdownWrapper": "./src/components/custom/wrappers/MarkdownWrapper/MarkdownWrapper.tsx",
+                      "./Navbar": "./src/components/Mui/Navbar/Navbar.tsx",
+                      "./NavMenu": "./src/components/Mui/Navbar/NavMenu.tsx",
+                      "./NotionDataWrapper": "./src/components/custom/NotionPage/NotionPage.tsx",
+                      "./QueryWrapper": "./src/components/custom/wrappers/QueryWrapper/QueryWrapper.tsx",
+                      "./ReusablePopover": "./src/components/custom/ReusablePopover/ReusablePopover.tsx",
+                      "./ReusableTable": "./src/components/custom/charts/ReusableTable.tsx",
+                      "./Tabs": "./src/components/Mui/Tabs/Tabs.tsx",
+                      "./ThemeProvider": "./src/utilities/theme/index.ts",
+                      "./utilities/queries": "./src/utilities/api/index.ts",
+                      "./utilities/store": "./src/utilities/store/index.ts",
+                      "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts"
                     },
                     shared: {
                       react: {
@@ -162,7 +247,7 @@ export default defineConfig({
                           requiredVersion: "^18.3.1"
                       },
                       zustand: { singleton: true, requiredVersion: "^4.1.1" }, // Share Zustand to ensure single store instance
-                  },
+                    },
                 }),
                 // new rspack.FederatedTypesPlugin(),
                 new rspack.DefinePlugin({
@@ -174,16 +259,78 @@ export default defineConfig({
                 }),
                 NativeFederationTypeScriptRemote.rspack({
                   moduleFederationConfig: {
-                    name: "mfe2",
+                    name: "tester",
                     remotes: {},
-                    exposes: {...federationConfig.exposes},
+                    exposes: {
+                      // ...federationConfig.exposes,
+                      "./App": "./src/App/index.tsx",
+                      "./CherrytopFramework": "./src/Entry.tsx",
+                      "./AuthProvider": "./src/components/custom/Auth/Auth3.tsx",
+                      // app/AppProvider includes theme, alert, confirm, drawer providers
+                      "./AppProvider": "./src/components/custom/providers/Providers.tsx",
+                      "./AlertProvider": "./src/components/custom/providers/AlertProvider.tsx",
+                      "./ConfirmProvider": "./src/components/custom/providers/Confirm/ConfirmProvider.tsx",
+                      "./BottomNavigation": "./src/components/Mui/BottomNavigation/BottomNavigation.tsx",
+                      "./Camera": "./src/components/custom/Camera/Camera.tsx",
+                      "./ChatBox": "./src/components/custom/Chat/Chat.tsx",
+                      "./ChatView": "./src/components/custom/Chat/ChatView.tsx",
+                      "./ChartsContainer": "./src/components/custom/charts/ChartsWrapper.tsx",
+                      "./DrawerContainer": "./src/components/Mui/Drawer/Drawer.tsx",
+                      "./DateTimeLabel": "./src/components/custom/DateTimeLabel/DateTimeLabel.tsx",
+                      './DisplayCard': './src/components/Mui/DisplayCard/DisplayCard.tsx',                        
+                      "./FormContainer": "./src/components/custom/forms/FormContainer.tsx",
+                      './List': './src/components/Mui/List/List.tsx',
+                      "./MarkdownWrapper": "./src/components/custom/wrappers/MarkdownWrapper/MarkdownWrapper.tsx",
+                      "./Navbar": "./src/components/Mui/Navbar/Navbar.tsx",
+                      "./NavMenu": "./src/components/Mui/Navbar/NavMenu.tsx",
+                      "./NotionDataWrapper": "./src/components/custom/NotionPage/NotionPage.tsx",
+                      "./QueryWrapper": "./src/components/custom/wrappers/QueryWrapper/QueryWrapper.tsx",
+                      "./ReusablePopover": "./src/components/custom/ReusablePopover/ReusablePopover.tsx",
+                      "./ReusableTable": "./src/components/custom/charts/ReusableTable.tsx",
+                      "./Tabs": "./src/components/Mui/Tabs/Tabs.tsx",
+                      "./ThemeProvider": "./src/utilities/theme/index.ts",
+                      "./utilities/queries": "./src/utilities/api/index.ts",
+                      "./utilities/store": "./src/utilities/store/index.ts",
+                      "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts"
+                    },
                   },
                 }),
                 NativeFederationTypeScriptHost.rspack({
                   moduleFederationConfig: {
                     name: "app",
                     remotes: {},
-                    exposes: {...federationConfig.exposes},
+                    exposes: {
+                      // ...federationConfig.exposes,
+                      "./App": "./src/App/index.tsx",
+                      "./CherrytopFramework": "./src/Entry.tsx",
+                      "./AuthProvider": "./src/components/custom/Auth/Auth3.tsx",
+                      // app/AppProvider includes theme, alert, confirm, drawer providers
+                      "./AppProvider": "./src/components/custom/providers/Providers.tsx",
+                      "./AlertProvider": "./src/components/custom/providers/AlertProvider.tsx",
+                      "./ConfirmProvider": "./src/components/custom/providers/Confirm/ConfirmProvider.tsx",
+                      "./BottomNavigation": "./src/components/Mui/BottomNavigation/BottomNavigation.tsx",
+                      "./Camera": "./src/components/custom/Camera/Camera.tsx",
+                      "./ChatBox": "./src/components/custom/Chat/Chat.tsx",
+                      "./ChatView": "./src/components/custom/Chat/ChatView.tsx",
+                      "./ChartsContainer": "./src/components/custom/charts/ChartsWrapper.tsx",
+                      "./DrawerContainer": "./src/components/Mui/Drawer/Drawer.tsx",
+                      "./DateTimeLabel": "./src/components/custom/DateTimeLabel/DateTimeLabel.tsx",
+                      './DisplayCard': './src/components/Mui/DisplayCard/DisplayCard.tsx',                        
+                      "./FormContainer": "./src/components/custom/forms/FormContainer.tsx",
+                      './List': './src/components/Mui/List/List.tsx',
+                      "./MarkdownWrapper": "./src/components/custom/wrappers/MarkdownWrapper/MarkdownWrapper.tsx",
+                      "./Navbar": "./src/components/Mui/Navbar/Navbar.tsx",
+                      "./NavMenu": "./src/components/Mui/Navbar/NavMenu.tsx",
+                      "./NotionDataWrapper": "./src/components/custom/NotionPage/NotionPage.tsx",
+                      "./QueryWrapper": "./src/components/custom/wrappers/QueryWrapper/QueryWrapper.tsx",
+                      "./ReusablePopover": "./src/components/custom/ReusablePopover/ReusablePopover.tsx",
+                      "./ReusableTable": "./src/components/custom/charts/ReusableTable.tsx",
+                      "./Tabs": "./src/components/Mui/Tabs/Tabs.tsx",
+                      "./ThemeProvider": "./src/utilities/theme/index.ts",
+                      "./utilities/queries": "./src/utilities/api/index.ts",
+                      "./utilities/store": "./src/utilities/store/index.ts",
+                      "./utilities/store/utilityStore": "./src/utilities/store/utilityStore.ts"
+                    },
                   },
                 }),
                 // new rspack.HtmlRspackPlugin({
@@ -295,3 +442,5 @@ export default defineConfig({
   //     // ],
   // },
 });
+
+export default config2;

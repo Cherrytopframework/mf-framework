@@ -3,20 +3,23 @@
     // * Rustpack Config -- loose config **
     "types": [
       "@rspack/core/module",
-      "vite/client"
+      // "vite/client"
     ],
+    "paths": {
+      "*": ["./@mf-types/*"]
+    },
     // // "moduleResolution": "bundler",
     // "module": "Node16",
     // "noEmit": true,
     // "outDir": "dist",
     // "esModuleInterop": true,
     // "moduleResolution": "Node16",
-    // // // * Rustpack Config **
-    // // "types": [
-    // //   "@rspack/core/module"
-    // // ],
+    // // * Rustpack Config **
+    // "types": [
+    //   "@rspack/core/module"
+    // ],
 
-    "outDir": "./dist/",
+    // "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "ESNext",
