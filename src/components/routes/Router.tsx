@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     createBrowserRouter,
@@ -9,19 +8,22 @@ import Navbar from 'mf2/Navbar';
 import CherrytopFramework from 'mf2/CherrytopFramework';
 // import Stonetowerpizza from 'stonetowerpizza/App';
 // import Openfitness from 'openfitness/App';
-// import AiChat from 'aichat/App';
+import AiChat from 'aichat/App';
 import App from '../App';
 import { 
     aichatNavbarSchema, 
     familyappsNavbarSchema, 
-    openfitnessNavbarSchema 
+    // openfitnessNavbarSchema 
 } from '../config/navbarSchema';
 
 
-const NavigationWrapper = ({ children, ...props }) => {
+const NavigationWrapper = (
+    { children, ...props }: 
+    { children: React.ReactNode, [key: string]: any }
+) => {
     const navigate = useNavigate();
     const { utilityStore } = props?.stores;
-    console.log("NavigationWrapper.props: ", props);
+    // console.log("NavigationWrapper.props: ", props);
     return (
         <>
             <Navbar layout={props.navbarSchema({ navigate, utilityStore })} />
@@ -47,11 +49,11 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
         //     element: (<Openfitness />),
         //     navbarSchema: openfitnessNavbarSchema
         // },
-        // {
-        //     path: "/aichat",
-        //     element: (<AiChat />),
-        //     navbarSchema: aichatNavbarSchema
-        // },
+        {
+            path: "/aichat",
+            element: (<AiChat />),
+            navbarSchema: aichatNavbarSchema
+        },
         {
             path: "/cherrytopframework",
             element: (<CherrytopFramework />),

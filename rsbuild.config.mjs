@@ -84,11 +84,28 @@ const config2 = defineConfig({
                       // app: 'app@http://localhost:8080/mf-manifest.json',
                       // mfe2: 'mfe2@http://localhost:3000/mf-manifest.json',
                       mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
+                      aichat: 'aichat@https://aichat2mfv.netlify.app/remoteEntry.js',
+                      // aichat: 'aichat@http://localhost:3002/remoteEntry.js',
                       // aichat: 'aichat@http://localhost:3002/mf-manifest.json',
+                      // aichat: 'aichat@https://aichat2mfv.netlify.app/mf-manifest.json',
                       // openfitness: 'openfitness@http://localhost:3003/mf-manifest.json',
                       // stonetowerpizza: 'stonetowerpizza@http://localhost:3004/mf-manifest.json',
                   },
-                  shared: ['react', 'react-dom', 'zustand'],
+                  shared: {
+                    react: {
+                        singleton: true
+                    },
+                    "react-dom": {
+                        singleton: true
+                    },
+                    zustand: { 
+                        singleton: true
+                    },
+                    ["react-router-dom"]: {
+                      singleton: true,
+                      requiredVersion: "^6.3.0"
+                    }
+                }
               }),
               new ReactRefreshPlugin(),
             //   new rspack.DefinePlugin({

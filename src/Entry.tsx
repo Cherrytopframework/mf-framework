@@ -1,4 +1,3 @@
-import React from 'react'
 // import MfeButton from 'mfe2/Button';
 
 const Entry = () => {
