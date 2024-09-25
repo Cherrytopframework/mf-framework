@@ -1,7 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+// @ts-ignore
 import AuthProvider from 'mf2/AuthProvider';
+// @ts-ignore
 import Providers from 'mf2/AppProvider';
+// @ts-ignore
 import { useSupabaseStore } from 'mf2/utilities/store';
 import AppRouter from './components/routes/Router';
 // import Entry from './Entry';
@@ -26,11 +29,11 @@ root.render(
             {(stores) => stores && (
                 <AuthProvider 
                     stores={stores} 
-                    authProps={(props) => console.log("AuthProvider.authProps: ", props)} 
-                    onSubmit={(data) => console.log("AuthProvider.onSubmit: ", data)}
+                    authProps={(props: any) => console.log("AuthProvider.authProps: ", props)} 
+                    onSubmit={(data: any) => console.log("AuthProvider.onSubmit: ", data)}
                 >
-                    <Providers path={({ appConfig }) => appConfig}>
-                        {(response) => response && <AppRouter stores={stores} data={response} />}
+                    <Providers path={({ appConfig }: { appConfig: string }) => appConfig}>
+                        {(response: any) => response && <AppRouter stores={stores} data={response} />}
                     </Providers>
                 </AuthProvider>
             )}

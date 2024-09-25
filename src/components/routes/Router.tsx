@@ -3,17 +3,22 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+// @ts-ignore
 import { SmoothScroll } from 'mf2/ThemeProvider';
+// @ts-ignore
 import Navbar from 'mf2/Navbar';
+// @ts-ignore
 import CherrytopFramework from 'mf2/CherrytopFramework';
-// import Stonetowerpizza from 'stonetowerpizza/App';
-// import Openfitness from 'openfitness/App';
+// @ts-ignore
+import Stonetowerpizza from 'stonetowerpizza/App';
+// @ts-ignore
+import Openfitness from 'openfitness/App';
 import AiChat from 'aichat/App';
 import App from '../App';
 import { 
     aichatNavbarSchema, 
     familyappsNavbarSchema, 
-    // openfitnessNavbarSchema 
+    openfitnessNavbarSchema
 } from '../config/navbarSchema';
 
 
@@ -44,11 +49,11 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
             element: (<App appConfig={data} />),
             navbarSchema: familyappsNavbarSchema
         },
-        // {
-        //     path: "/openfitness",
-        //     element: (<Openfitness />),
-        //     navbarSchema: openfitnessNavbarSchema
-        // },
+        {
+            path: "/openfitness",
+            element: (<Openfitness />),
+            navbarSchema: openfitnessNavbarSchema
+        },
         {
             path: "/aichat",
             element: (<AiChat />),
@@ -59,11 +64,11 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
             element: (<CherrytopFramework />),
             navbarSchema: familyappsNavbarSchema
         },
-        // {
-        //     path: "/stonetowerpizza",
-        //     element: (<Stonetowerpizza />),
-        //     navbarSchema: familyappsNavbarSchema
-        // },
+        {
+            path: "/stonetowerpizza",
+            element: (<Stonetowerpizza />),
+            navbarSchema: familyappsNavbarSchema
+        },
         {
             path: "/test",
             element: (<div style={{ marginTop: "100px" }}>404</div>),

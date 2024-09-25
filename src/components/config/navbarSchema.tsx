@@ -1,4 +1,4 @@
-import React from 'react';
+// @ts-ignore
 import NavMenu from 'mf2/NavMenu';
 
 // ** navbarSchema -- This will determine the structure/layout of the navbar
@@ -12,7 +12,7 @@ import NavMenu from 'mf2/NavMenu';
 // ... cart is linked to its own store that can be accessed anywhere in the app
 // ... cart drawer will use the state in the cart store to render its view
 // Openfitness app navbar schema
-export const openfitnessNavbarSchema = ({ utilityStore, navigate }) => ({
+export const openfitnessNavbarSchema = ({ utilityStore, navigate }: any) => ({
     left: {
         items: [
             {
