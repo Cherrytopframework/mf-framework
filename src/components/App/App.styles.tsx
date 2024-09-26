@@ -13,7 +13,7 @@ export const Styled = {
                     : "100%",
                 // margin: "0 16px",
                 ...props?.container && {
-                    marginTop: "100px", 
+                    marginTop: "48px", 
                     display: "flex", 
                     flexWrap: "wrap", 
                     maxWidth: "100vw",
