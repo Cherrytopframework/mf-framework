@@ -80,8 +80,8 @@ const config2 = defineConfig({
                   remotes: {
                       // production
                       // app: 'app@https://cherrytopframework.netlify.app/mf-manifest.json',
-                      mf2: 'mf2@http://localhost:8082/remoteEntry.js',
-                      // mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
+                      // mf2: 'mf2@http://localhost:8082/remoteEntry.js',
+                      mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
                       aichat: 'aichat@https://aichat2mfv.netlify.app/remoteEntry.js',
                       openfitness: 'openfitness@https://openfitness2mfv1.netlify.app/remoteEntry.js',
                       stonetowerpizza: 'stonetowerpizza@https://stonetowerpizza2mfv.netlify.app/remoteEntry.js'
