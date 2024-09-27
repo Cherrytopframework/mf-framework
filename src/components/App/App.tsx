@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 // @ts-ignore
+import { Grid } from 'mf2/Mui';
+// @ts-ignore
 import DrawerContainer from 'mf2/DrawerContainer';
 // @ts-ignore
 import DateTimeLabel from 'mf2/DateTimeLabel';
@@ -7,16 +9,21 @@ import DateTimeLabel from 'mf2/DateTimeLabel';
 import DisplayCard from 'mf2/DisplayCard';
 // @ts-ignore
 import List from 'mf2/List';
-// import QueryWrapper from 'mf2/QueryWrapper';
-import { Styled } from './App.styles';
 
 
 const drawerBoxStyle = { padding: "16px", margin: "48px 0", display: "block" };
 
 const Drawer = ({ apps, handleNavigate }: any) => (
     <DrawerContainer
-        variant="permanent"
-        open={true}
+        variant={{ 
+            xs: "temporary", 
+            sm: "temporary", 
+            md: "temporary",
+            lg: "permanent",
+            xl: "permanent"
+        }}
+        anchor={{ xs: "top", sm: "top", md: "top", lg: "left", xl: "left" }}
+        open={false}
         sx={{ width: 400, zIndex: 8 }}
         boxStyle={{ width: "500px" }}
     >
@@ -46,18 +53,13 @@ const Drawer = ({ apps, handleNavigate }: any) => (
 );
 
 const MainContent = ({ apps, handleNavigate, navigate }: any) => (
-    <Styled.Grid sx={{ marginLeft: "240px" }}>
+    <Grid sx={{ marginLeft: { xs: 0, md: "240px" }, p: 4, mt: 12 }}>
         {apps && (
-            <Styled.Grid container>
+            <Grid container spacing={2}>
                 {Object.keys(apps)
                     .map((app: string, index: number) => !apps[app].disabled //filter
                         && (
-                            <Styled.Grid key={index} size={(3.8) || {
-                                // Styled.Grid needs a useWindowSize hook
-                                sm: 12,
-                                md: 4,
-                                lg: 3
-                            }}>
+                            <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }}>
                                 <DisplayCard
                                     data={{
                                         ...apps[app],
@@ -67,18 +69,18 @@ const MainContent = ({ apps, handleNavigate, navigate }: any) => (
                                     }}
                                     sx={{ borderRadius: "16px" }}
                                 />
-                            </Styled.Grid>
+                            </Grid>
                         )
                     )
                 }
-            </Styled.Grid>
+            </Grid>
         )}
-        <Styled.Grid sx={{ margin: "16px 0" }}>
+        <Grid sx={{ margin: "16px 0" }}>
             FamilyAppsSuite.2.mfe version
             <DateTimeLabel />
             Copyright 2024 Michael Woodward * Made with ❤️
-        </Styled.Grid>
-    </Styled.Grid>
+        </Grid>
+    </Grid>
 );
 
 const App = (props: any) => {
@@ -91,10 +93,10 @@ const App = (props: any) => {
     };
 
     return (
-        <Styled.Grid container>
+        <Grid container>
             {sharedProps.apps && <Drawer {...sharedProps} />}
             {sharedProps.apps && <MainContent {...sharedProps} />}
-        </Styled.Grid>
+        </Grid>
     );
 };
 

@@ -5,8 +5,10 @@
       "@rspack/core/module",
       // "vite/client"
     ],
+    "baseUrl": "./",
     "paths": {
-      "*": ["./@mf-types/*"]
+      "*": ["./@mf-types/*"],
+      "mf2/*": ["node_modules/mf2/*"]
     },
     // // "moduleResolution": "bundler",
     // "module": "Node16",
