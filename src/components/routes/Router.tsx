@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     createBrowserRouter,
@@ -13,6 +14,9 @@ import CherrytopFramework from 'mf2/CherrytopFramework';
 import Stonetowerpizza from 'stonetowerpizza/App';
 // @ts-ignore
 import Openfitness from 'openfitness/App';
+// @ts-ignore
+import SmartiCamera from 'camera/App';
+// @ts-ignore
 import AiChat from 'aichat/App';
 import App from '../App';
 import { 
@@ -24,21 +28,30 @@ import {
 
 const NavigationWrapper = (
     { children, ...props }: 
-    { children: React.ReactNode, [key: string]: any }
+    { children: JSX.Element, [key: string]: any }
 ) => {
     const navigate = useNavigate();
     const { utilityStore } = props?.stores;
-    // console.log("NavigationWrapper.props: ", props);
+    // router.go(): has to be a function referring to the navigate inside of its router context
+    const router = { go: (path: string) => navigate(path) };
     return (
         <>
             <Navbar layout={props.navbarSchema({ navigate, utilityStore })} />
             {/* These "providers" have to be inside of the router */}
+            {/* This is kind of like a "map-staate-to-props" for all the microfrontends */}
             <SmoothScroll>
-                {children}
+                {React.cloneElement(children, { ...props, router })}
             </SmoothScroll>
         </>
     );
 };
+
+// const CameraTest = (props: any) => {
+//     console.log("CameraTest.props: ", props);
+//     return (
+//         <>This {console.log("Camera.props: ", "props")} is the camera route</>
+//     )
+// }
 
 
 function AppRouter({ data, stores }: { data?: any, stores?: any }) {
@@ -67,6 +80,11 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
         {
             path: "/stonetowerpizza",
             element: (<Stonetowerpizza />),
+            navbarSchema: familyappsNavbarSchema
+        },
+        {
+            path: "/camera",
+            element: (<SmartiCamera />),
             navbarSchema: familyappsNavbarSchema
         },
         {

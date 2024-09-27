@@ -5,14 +5,19 @@ import AuthProvider from 'mf2/AuthProvider';
 // @ts-ignore
 import Providers from 'mf2/AppProvider';
 // @ts-ignore
-import { useSupabaseStore } from 'mf2/utilities/store';
+import { useSupabaseStore, useSharedStore } from 'mf2/utilities/store';
+// // @ts-ignore
+// import { useSharedStore } from 'mf2/utilities/store/sharedStore';
 import AppRouter from './components/routes/Router';
 // import Entry from './Entry';
 
 
 const StoresProvider = ({ children }: { children: (stores: any) => JSX.Element }) => {
     const supabaseStore = useSupabaseStore();
-    return children({supabaseStore});
+    // sharedStore is instantiated and referenced from the AppRouter context
+    // ... being passed into the mfe's
+    const sharedStore = useSharedStore();
+    return children({ supabaseStore, sharedStore });
 };
 // Whenever a microfrontend needs to use a store, it should be called at the root and passed
 // to the microfrontend as props (can also make a copy of the store in a local store to access normally).

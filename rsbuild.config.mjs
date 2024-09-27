@@ -76,13 +76,19 @@ const config2 = defineConfig({
               // new HtmlWebpackPlugin(),
               new ModuleFederationPlugin({
                   name: 'app',
-                  exposes: {},
+                  exposes: {
+                      './AppRouter': './src/components/routes/Router.tsx',
+                  },
                   remotes: {
-                      // production
-                      // app: 'app@https://cherrytopframework.netlify.app/mf-manifest.json',
+                      // ** development
                       // mf2: 'mf2@http://localhost:8082/remoteEntry.js',
+                      // aichat: 'aichat@http://localhost:3002/remoteEntry.js',
+                      
+                      // ** production
+                      // app: 'app@https://cherrytopframework.netlify.app/mf-manifest.json',
                       mf2: 'mf2@https://cherrytopframeworktester.netlify.app/remoteEntry.js',
                       aichat: 'aichat@https://aichat2mfv.netlify.app/remoteEntry.js',
+                      camera: 'camera@https://smarticamera2mfv.netlify.app/remoteEntry.js',
                       openfitness: 'openfitness@https://openfitness2mfv1.netlify.app/remoteEntry.js',
                       stonetowerpizza: 'stonetowerpizza@https://stonetowerpizza2mfv.netlify.app/remoteEntry.js'
                   },
