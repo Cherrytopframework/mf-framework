@@ -5,7 +5,7 @@ import AuthProvider from 'mf2/AuthProvider';
 // @ts-ignore
 import Providers from 'mf2/AppProvider';
 // @ts-ignore
-import { useSupabaseStore, useSharedStore } from 'mf2/utilities/store';
+import { useSupabaseStore, useSharedStore, useUtilityStore } from 'mf2/utilities/store';
 // // @ts-ignore
 // import { useSharedStore } from 'mf2/utilities/store/sharedStore';
 import AppRouter from './components/routes/Router';
@@ -14,10 +14,11 @@ import AppRouter from './components/routes/Router';
 
 const StoresProvider = ({ children }: { children: (stores: any) => JSX.Element }) => {
     const supabaseStore = useSupabaseStore();
+    const utilityStore = useUtilityStore();
     // sharedStore is instantiated and referenced from the AppRouter context
     // ... being passed into the mfe's
     const sharedStore = useSharedStore();
-    return children({ supabaseStore, sharedStore });
+    return children({ supabaseStore, sharedStore, utilityStore });
 };
 // Whenever a microfrontend needs to use a store, it should be called at the root and passed
 // to the microfrontend as props (can also make a copy of the store in a local store to access normally).
@@ -34,8 +35,8 @@ root.render(
             {(stores) => stores && (
                 <AuthProvider 
                     stores={stores} 
-                    authProps={(props: any) => console.log("AuthProvider.authProps: ", props)} 
-                    onSubmit={(data: any) => console.log("AuthProvider.onSubmit: ", data)}
+                    authProps={(props: any) => console.logs("AuthProvider.authProps: ", props)} 
+                    onSubmit={(data: any) => console.logs("AuthProvider.onSubmit: ", data)}
                 >
                     <Providers path={({ appConfig }: { appConfig: string }) => appConfig}>
                         {(response: any) => response && <AppRouter stores={stores} data={response} />}

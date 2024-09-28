@@ -83,6 +83,7 @@ const config2 = defineConfig({
                       // ** development
                       // mf2: 'mf2@http://localhost:8082/remoteEntry.js',
                       // aichat: 'aichat@http://localhost:3002/remoteEntry.js',
+                      // openfitness: 'openfitness@http://localhost:3003/remoteEntry.js',
                       
                       // ** production
                       // app: 'app@https://cherrytopframework.netlify.app/mf-manifest.json',

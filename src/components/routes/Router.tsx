@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -18,6 +18,8 @@ import Openfitness from 'openfitness/App';
 import SmartiCamera from 'camera/App';
 // @ts-ignore
 import AiChat from 'aichat/App';
+// @ts-ignore
+// import { useUtilityStore } from 'mf2/utilities/store/utilityStore';
 import App from '../App';
 import { 
     aichatNavbarSchema, 
@@ -26,14 +28,37 @@ import {
 } from '../config/navbarSchema';
 
 
-const NavigationWrapper = (
+// **** PARENT MFE Navigation Router/Adapter ****
+const NavigationAdapter = (
     { children, ...props }: 
     { children: JSX.Element, [key: string]: any }
 ) => {
+    // const location = useLocation();
     const navigate = useNavigate();
+    // const utilityStore = useUtilityStore();
     const { utilityStore } = props?.stores;
     // router.go(): has to be a function referring to the navigate inside of its router context
-    const router = { go: (path: string) => navigate(path) };
+    const router = { go: (path: string) => navigate(path)};
+
+    console.logs("NavigationAdapter.props: ", props)
+
+    // This is using a default navbarSchema that is dynamically set by the route ...
+    // ... the setNavbarSchema function can be used to override the default navbarSchema ...
+    // ... from within a child mfe enabling the ability to inject logic into the navbar ...
+    // ... from the child mfe. This is particularly useful when needing to navigate both ...
+    // ... the parent mfe and the child mfe.
+    // const [navbarSchema, setNavbarSchema] = useState(
+    //     props.navbarSchema({ navigate: router.go, utilityStore, router })
+    // );
+
+    // useEffect(() => {
+    //     console.logs("The route has changed: ", location);
+    //     // need to reset the schema to its own on each navigation
+    //     setNavbarSchema(props.navbarSchema({ navigate: router.go, utilityStore, router }));
+    //     // clear the drawer on route change
+    //     utilityStore.setDrawer({ open: false, anchor: "left", content: <></> });
+    // }, [location.pathname]);
+
     return (
         <>
             <Navbar layout={props.navbarSchema({ navigate, utilityStore })} />
@@ -46,12 +71,12 @@ const NavigationWrapper = (
     );
 };
 
-// const CameraTest = (props: any) => {
-//     console.log("CameraTest.props: ", props);
-//     return (
-//         <>This {console.log("Camera.props: ", "props")} is the camera route</>
-//     )
-// }
+const CameraTest = (props: any) => {
+    console.logs("CameraTest.props: ", props);
+    return (
+        <>This {console.logs("Camera.props: ", "props")} is the camera route</>
+    )
+}
 
 
 function AppRouter({ data, stores }: { data?: any, stores?: any }) {
@@ -65,7 +90,25 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
         {
             path: "/openfitness",
             element: (<Openfitness />),
-            navbarSchema: openfitnessNavbarSchema
+            navbarSchema: openfitnessNavbarSchema,
+            children: [
+                {
+                    path: "/openfitness/test",
+                    element: (
+                        <>
+                            {/** 
+                             * Funny story: For this Microfrontend architecture. 
+                             * The child path just needs to be defined here. Then it can be redefined 
+                             * in the child MFE routes.childRoutes with its actual definition.
+                             **/}
+                        </>
+                    ),
+                },
+                {
+                    path: "/openfitness/planner",
+                    element: (<></>),
+                },
+            ]
         },
         {
             path: "/aichat",
@@ -89,15 +132,16 @@ function AppRouter({ data, stores }: { data?: any, stores?: any }) {
         },
         {
             path: "/test",
-            element: (<div style={{ marginTop: "100px" }}>404</div>),
+            element: (<CameraTest />),
+            navbarSchema: familyappsNavbarSchema
         },
     ].map((route) => ({
         id: route.path,
         ...route,
         element: (
-            <NavigationWrapper navbarSchema={route?.navbarSchema || {}} stores={stores}>
+            <NavigationAdapter navbarSchema={route?.navbarSchema || {}} stores={stores}>
                 {route.element}
-            </NavigationWrapper>
+            </NavigationAdapter>
         )
     }));
 

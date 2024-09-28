@@ -38,7 +38,7 @@ export const openfitnessNavbarSchema = ({ utilityStore, navigate }: any) => ({
         items: [
             {
                 key: "title",
-                content: "Family Apps Suite Micro-Frontend version 0.0.1",
+                content: "Openfitness2 Navbar from Framework",
             },
         ]
     },
@@ -71,14 +71,31 @@ export const openfitnessNavbarSchema = ({ utilityStore, navigate }: any) => ({
             {
                 key: "menu",
                 anchor: "right",
-                content: (<NavMenu />)
+                content: (
+                    <NavMenu
+                        items={[
+                            // {
+                            //     key: "profile",
+                            //     onClick: () => navigate("/profile")
+                            // },
+                            // {
+                            //     key: "alert",
+                            //     onClick: () => {
+                            //         console.log("Trying to create Alert: ", utilityStore)
+                            //         utilityStore.createAlert("success", "Alert created")
+                            //     }
+                            // },
+                            // ...etc. ...
+                        ]}
+                    />
+                )
             },
         ]
     },
 });
 
 // FamilyApps Navbar Schema
-export const familyappsNavbarSchema = ({ navigate }) => ({
+export const familyappsNavbarSchema = ({ navigate, utilityStore }: any) => ({
     left: {
         items: [
             {
@@ -91,7 +108,7 @@ export const familyappsNavbarSchema = ({ navigate }) => ({
         items: [
             {
                 key: "title",
-                content: "Family Apps Suite Micro-Frontend version 0.0.1",
+                content: "Cherrytopframework (formerly FamilyApps) mfv1 0.0.2",
             },
         ]
     },
@@ -100,14 +117,40 @@ export const familyappsNavbarSchema = ({ navigate }) => ({
             {
                 key: "menu",
                 anchor: "right",
-                content: (<NavMenu />)
+                content: (
+                    <NavMenu
+                        items={[
+                            {
+                                key: "placeholder10",
+                                onClick: () => {
+                                    // to navigate into a mfe and into one of its child routes ...
+                                    // ... need to route to the mfe using the parent AppRouter/navigate
+                                    navigate("/openfitness")
+                                    // ... then navigate to the route in the mfe using the child's mfe's navigate
+                                    // ... need to do this by drilling the child navigate into the navbarSchema using ...
+                                    // ... overrideNavbarSchema() function
+                                    // if (props?.router) props.router.go("/planner");
+                                }
+                            },
+                            {
+                                key: "alert",
+                                onClick: () => utilityStore.createAlert("success", "Alert created")
+                            },
+                            {
+                                key: "erroralert",
+                                onClick: () => utilityStore.createAlert("error", "Error Alert created")
+                            },
+                            // ...etc. ...
+                        ]}
+                    />
+                )
             },
         ]
     },
 })
 
 // Aichat Navbar Schema
-export const aichatNavbarSchema = ({ navigate }) => ({
+export const aichatNavbarSchema = ({ navigate }: any) => ({
     left: {
         items: [
             {
@@ -120,7 +163,7 @@ export const aichatNavbarSchema = ({ navigate }) => ({
         items: [
             {
                 key: "title",
-                content: "Family Apps Suite Micro-Frontend version 0.0.1",
+                content: "Aichat mfv1 0.0.2 navbar from framework",
             },
         ]
     },
@@ -129,7 +172,7 @@ export const aichatNavbarSchema = ({ navigate }) => ({
             {
                 key: "menu",
                 anchor: "right",
-                content: (<NavMenu />)
+                content: (<></>)
             },
         ]
     },
